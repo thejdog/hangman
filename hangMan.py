@@ -225,7 +225,7 @@ while alive and not won:
 render_man()
 
 if won == True:
-    if mode == 1:
+    if mode == "1":
         print()
         print("YOU WIN!")
         print()
@@ -238,7 +238,7 @@ if won == True:
         print("THE WORD WAS: ", word)
 
 else:
-    if mode == 1:
+    if mode == "1":
         print()
         print("YOU LOSE!")
         print()

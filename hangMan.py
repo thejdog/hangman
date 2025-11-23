@@ -184,7 +184,7 @@ while alive and not won:
     go = False
 
     while go == False:
-        print("Player 2: Guess a letter of player 1's word:")
+        print("Guess a letter of the word:")
         letter = str(input("> "))
 
         if not len(letter) == 1:

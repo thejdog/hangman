@@ -6,26 +6,97 @@ man = 0
 used = []
 guessed = ""
 randomWords = [
-    "python", "hangman", "computer", "program", "random", "challenge",
-    "science", "elephant", "galaxy", "mystery", "keyboard", "guessing",
-    "puzzle", "circuit", "mouse", "superb", "great", "book", "piano",
-    "chips", "creeper", "minecraft", "minecart", "code", "binary",
-    "headphones", "dog", "alphabet", "painting", "firefighter", "thinking",
-    "humble", "incompressible", "jumping", "laughing", "nothing",
-    "optical", "queen", "game", "something", "unhappy", "vortex",
-    "words", "xylophone", "yellow", "zebra", "radiation", "electrical",
-    "impostor", "task", "admin", "cafeteria", "meltdown", "metadata",
-    "programming", "music", "house", "mario", "goomba", "bowser", "koopa",
-    "blocks", "pickaxe", "tools", "crewmate", "enderman", "mushroom",
-    "piranha", "pipe", "plumber", "medbay", "ghast", "artificial", 
-    "intelligence", "politics", "cat", "pseudopseudohypoparathyroidism", 
-    "pneumonoultramicroscopicsilicovolcanoconiosis", "trophy", "mathematics",
-    "floccinaucinihilipilification", "hippopotomonstrosesquippedaliophobia", 
-    "antidisestablishmentarianism", "supercalifragilisticexpialidocious", 
-    "Eellogofusciouhipoppokunurious", "Hexakosioihexekontahexaphobia",
-    "Spectrophotofluorometrically", "Honorificabilitudinitatibus", "bus",
-
+    "python",
+    "hangman",
+    "computer",
+    "program",
+    "random",
+    "challenge",
+    "science",
+    "elephant",
+    "galaxy",
+    "mystery",
+    "keyboard",
+    "guessing",
+    "puzzle",
+    "circuit",
+    "mouse",
+    "superb",
+    "great",
+    "book",
+    "piano",
+    "chips",
+    "creeper",
+    "minecraft",
+    "minecart",
+    "code",
+    "binary",
+    "headphones",
+    "dog",
+    "alphabet",
+    "painting",
+    "firefighter",
+    "thinking",
+    "humble",
+    "incompressible",
+    "jumping",
+    "laughing",
+    "nothing",
+    "optical",
+    "queen",
+    "game",
+    "something",
+    "unhappy",
+    "vortex",
+    "words",
+    "xylophone",
+    "yellow",
+    "zebra",
+    "radiation",
+    "electrical",
+    "impostor",
+    "task",
+    "admin",
+    "cafeteria",
+    "meltdown",
+    "metadata",
+    "programming",
+    "music",
+    "house",
+    "mario",
+    "goomba",
+    "bowser",
+    "koopa",
+    "blocks",
+    "pickaxe",
+    "tools",
+    "crewmate",
+    "enderman",
+    "mushroom",
+    "piranha",
+    "pipe",
+    "plumber",
+    "medbay",
+    "ghast",
+    "artificial",
+    "intelligence",
+    "politics",
+    "cat",
+    "pseudopseudohypoparathyroidism",
+    "pneumonoultramicroscopicsilicovolcanoconiosis",
+    "trophy",
+    "mathematics",
+    "floccinaucinihilipilification",
+    "hippopotomonstrosesquippedaliophobia",
+    "antidisestablishmentarianism",
+    "supercalifragilisticexpialidocious",
+    "Eellogofusciouhipoppokunurious",
+    "Hexakosioihexekontahexaphobia",
+    "Spectrophotofluorometrically",
+    "Honorificabilitudinitatibus",
+    "bus",
 ]
+
 
 def render_man():
     global man
@@ -45,7 +116,7 @@ def render_man():
         print("      |  ")
         print("      |  ")
         print("=========")
-    
+
     elif man == 2:
         print("      |  ")
         print("      |  ")
@@ -72,7 +143,7 @@ def render_man():
         print("     /|  ")
         print("    / |  ")
         print("=========")
-    
+
     elif man == 5:
         print("  +---+  ")
         print("  |   |  ")
@@ -108,7 +179,7 @@ def render_man():
         print("     /|  ")
         print("    / |  ")
         print("=========")
-    
+
     elif man == 9:
         print("  +---+  ")
         print("  |   |  ")
@@ -117,7 +188,7 @@ def render_man():
         print(" /   /|  ")
         print("    / |  ")
         print("=========")
-    
+
     elif man == 10:
         print("  +---+  ")
         print("  |   |  ")
@@ -127,10 +198,25 @@ def render_man():
         print("    / |  ")
         print("=========")
 
+
 def replace_at(string, index, new_char):
-    return string[:index] + new_char + string[index+1:]
+    return string[:index] + new_char + string[index + 1 :]
 
 
+def render_word_with_spaces(word: str) -> str:
+    """
+    This function takes a word string and returns a new string
+    with each character separated by a space.
+    For example, "python" becomes "p y t h o n"
+    Args:
+        word: The word to render
+    Returns:
+        A string with each character separated by a space
+    """
+    return " ".join(list(word))
+
+
+# Main program
 print()
 print("-----Hang Man-----")
 print()
@@ -178,7 +264,7 @@ if mode == 2:
 while alive and not won:
     render_man()
     print()
-    print("Guessed so far: ", guessed)
+    print("Guessed so far: ", render_word_with_spaces(guessed))
     print()
     print("Letters tried: ", used)
     go = False
@@ -191,7 +277,6 @@ while alive and not won:
             print()
             print("Please enter exactly ONE letter.")
             print()
-            
 
         elif letter in used:
             print()
@@ -205,18 +290,18 @@ while alive and not won:
     go = False
 
     if letter in word:
-        
+
         indexes = [y for y, char in enumerate(word) if char == letter]
         for x in indexes:
             guessed = replace_at(guessed, x, letter)
-        
+
     else:
         print("The letter ", letter, " is not in the word!")
         man = man + 1
 
     print()
 
-    if man >=10:
+    if man >= 10:
         alive = False
 
     if guessed == word:
@@ -245,7 +330,6 @@ else:
         print("THE WORD WAS: ", word)
         print("YOU GOT: ", guessed)
         print()
-
 
     else:
         print()

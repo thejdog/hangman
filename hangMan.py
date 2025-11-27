@@ -107,96 +107,96 @@ def render_man():
         print()
         print()
         print()
-        print("=========")
+        print("\033[38;5;245m=========\033[0m")
     elif man == 1:
+        print("\033[38;5;130m      |  ")
         print("      |  ")
         print("      |  ")
         print("      |  ")
         print("      |  ")
         print("      |  ")
-        print("      |  ")
-        print("=========")
+        print("\033[38;5;245m=========\033[0m")
 
     elif man == 2:
-        print("      |  ")
+        print("\033[38;5;130m      |  ")
         print("      |  ")
         print("      |  ")
         print("      |  ")
         print("     /|  ")
         print("    / |  ")
-        print("=========")
+        print("\033[38;5;245m=========\033[0m")
 
     elif man == 3:
-        print("  ----+  ")
+        print("\033[38;5;130m  ----+  ")
         print("      |  ")
         print("      |  ")
         print("      |  ")
         print("     /|  ")
         print("    / |  ")
-        print("=========")
+        print("\033[38;5;245m=========\033[0m")
 
     elif man == 4:
-        print("  +---+  ")
+        print("\033[38;5;130m  +---+  ")
         print("  |   |  ")
         print("      |  ")
         print("      |  ")
         print("     /|  ")
         print("    / |  ")
-        print("=========")
+        print("\033[38;5;245m=========\033[0m")
 
     elif man == 5:
-        print("  +---+  ")
+        print("\033[38;5;130m  +---+  ")
         print("  |   |  ")
-        print("  O   |  ")
+        print("\033[38;5;223m  O\033[38;5;130m   |  ")
         print("      |  ")
         print("     /|  ")
         print("    / |  ")
-        print("=========")
+        print("\033[38;5;245m=========\033[0m")
 
     elif man == 6:
-        print("  +---+  ")
+        print("\033[38;5;130m  +---+  ")
         print("  |   |  ")
-        print("  O   |  ")
-        print("  |   |  ")
+        print("\033[38;5;223m  O\033[38;5;130m   |  ")
+        print("\033[31m  |\033[38;5;130m   |  ")
         print("     /|  ")
         print("    / |  ")
-        print("=========")
+        print("\033[38;5;245m=========\033[0m")
 
     elif man == 7:
-        print("  +---+  ")
+        print("\033[38;5;130m  +---+  ")
         print("  |   |  ")
-        print("  O   |  ")
-        print(" /|   |  ")
+        print("\033[38;5;223m  O\033[38;5;130m   |  ")
+        print("\033[31m /|\033[38;5;130m   |  ")
         print("     /|  ")
         print("    / |  ")
-        print("=========")
+        print("\033[38;5;245m=========\033[0m")
 
     elif man == 8:
-        print("  +---+  ")
+        print("\033[38;5;130m  +---+  ")
         print("  |   |  ")
-        print("  O   |  ")
-        print(" /|\\  |  ")
+        print("\033[38;5;223m  O\033[38;5;130m   |  ")
+        print("\033[31m /|\\\033[38;5;130m  |  ")
         print("     /|  ")
         print("    / |  ")
-        print("=========")
+        print("\033[38;5;245m=========\033[0m")
 
     elif man == 9:
-        print("  +---+  ")
+        print("\033[38;5;130m  +---+  ")
         print("  |   |  ")
-        print("  O   |  ")
-        print(" /|\\  |  ")
-        print(" /   /|  ")
+        print("\033[38;5;223m  O\033[38;5;130m   |  ")
+        print("\033[31m /|\\\033[38;5;130m  |  ")
+        print("\033[34m /\033[38;5;130m   /|  ")
         print("    / |  ")
-        print("=========")
+        print("\033[38;5;245m=========\033[0m")
 
     elif man == 10:
-        print("  +---+  ")
+        print("\033[38;5;130m  +---+  ")
         print("  |   |  ")
-        print("  O   |  ")
-        print(" /|\\  |  ")
-        print(" / \\ /|  ")
+        print("\033[38;5;223m  O\033[38;5;130m   |  ")
+        print("\033[31m /|\\\033[38;5;130m  |  ")
+        print("\033[34m / \\\033[38;5;130m /|  ")
         print("    / |  ")
-        print("=========")
+        print("\033[38;5;245m=========\033[0m")
 
 
 def replace_at(string, index, new_char):
@@ -218,20 +218,21 @@ def render_word_with_spaces(word: str) -> str:
 
 # Main program
 print()
-print("-----Hang Man-----")
+print("\033[34m-----Hang Man-----\033[0m")
 print()
-print("Select mode:")
-print("1 - 1 Player (random word)")
-print("2 - 2 Player (Player 1 chooses a word)")
-mode = input("> ")
 begin = False
 
 while begin == False:
+    print("\033[34mSelect mode:")
+    print("1 - 1 Player (random word)")
+    print("2 - 2 Player (Player 1 chooses a word)\033[0m")
+    mode = input("\033[34m> ")
+    begin = False
     if mode == "1":
         begin = True
         word = random.choice(randomWords)
         print()
-        print("Random word selected! Begin guessing.")
+        print("Random word selected! Begin guessing.\033[0m")
         print()
         guessed = ""
 
@@ -240,18 +241,18 @@ while begin == False:
         go = False
         while go == False:
             print()
-            print("Player 1: enter your word for player 2 to guess:")
-            word = str(input("> "))
+            print("Player 1: enter your word for player 2 to guess:\033[0m")
+            word = str(input("\033[34m> "))
             guessed = ""
             print()
-            print("Your word: ", word, ". Confirm?[y,n]")
-            yn = str(input("> "))
+            print("Your word: ", word, ". Confirm?[y,n]\033[0m")
+            yn = str(input("\033[34m> "))
             print()
             if yn == "y":
                 go = True
 
     else:
-        print("Invalid selection. Please enter [1,2].")
+        print("\033[31mInvalid selection. Please enter [1,2].\033[0m")
 
 for j in range(len(word)):
     guessed = guessed + "_"
@@ -264,23 +265,23 @@ if mode == 2:
 while alive and not won:
     render_man()
     print()
-    print("Guessed so far: ", render_word_with_spaces(guessed))
+    print("\033[34mGuessed so far: ", render_word_with_spaces(guessed))
     print()
-    print("Letters tried: ", used)
+    print("Letters tried: ", used, "\033[0m")
     go = False
 
     while go == False:
-        print("Guess a letter of the word:")
-        letter = str(input("> "))
+        print("\033[34mGuess a letter of the word:\033[0m")
+        letter = str(input("\033[34m> "))
 
         if not len(letter) == 1:
             print()
-            print("Please enter exactly ONE letter.")
+            print("\033[31mPlease enter exactly ONE letter.\033[0m")
             print()
 
         elif letter in used:
             print()
-            print("Letter already used!")
+            print("\033[31mLetter already used!\033[0m")
             print()
 
         else:
@@ -296,7 +297,7 @@ while alive and not won:
             guessed = replace_at(guessed, x, letter)
 
     else:
-        print("The letter ", letter, " is not in the word!")
+        print("\033[33mThe letter ", letter, " is not in the word!\033[0m")
         man = man + 1
 
     print()
@@ -312,29 +313,29 @@ render_man()
 if won == True:
     if mode == "1":
         print()
-        print("YOU WIN!")
+        print("\033[32mYOU WIN!")
         print()
-        print("THE WORD WAS: ", word)
+        print("THE WORD WAS: ", word, "\033[0m")
         print()
     else:
         print()
-        print("PLAYER 2 WINS!")
+        print("\033[33mPLAYER 2 WINS!")
         print()
-        print("THE WORD WAS: ", word)
+        print("THE WORD WAS: ", word, "\033[0m")
 
 else:
     if mode == "1":
         print()
-        print("YOU LOSE!")
+        print("\033[31mYOU LOSE!")
         print()
         print("THE WORD WAS: ", word)
-        print("YOU GOT: ", guessed)
+        print("YOU GOT: ", guessed, "\033[0m")
         print()
 
     else:
         print()
-        print("PLAYER 1 WINS!")
+        print("\033[33mPLAYER 1 WINS!")
         print()
         print("THE WORD WAS: ", word)
-        print("PLAYER TWO GOT: ", guessed)
+        print("PLAYER TWO GOT: ", guessed, "\033[0m")
         print()
